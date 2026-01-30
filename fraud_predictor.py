@@ -132,3 +132,9 @@ while True:
         break
     else:
         print("❌ Invalid choice")
+'''
+If i make any changes , i should type the below things in terminal to push the changes to git repo
+git add .
+git commit -m "Describe what you changed"
+git push
+'''
