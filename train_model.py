@@ -8,7 +8,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 
-# Loading the data set to a pandas dataframe    
+ # Loading the data set to a pandas dataframe    
 credit_card_data = pd.read_csv(r"C:\Users\swaji\Desktop\project1\creditcard.csv")
 
 
