@@ -126,7 +126,12 @@ classes.
   Project documentation
 
 -
-If i make any changes , i should type the below things in terminal to push the changes to git repo
+## Updating the Repository
+
+If any changes are made to the project, use the following commands in the terminal
+to push the updates to the GitHub repository:
+
+```bash
 git add .
 git commit -m "Describe what you changed"
 git push
