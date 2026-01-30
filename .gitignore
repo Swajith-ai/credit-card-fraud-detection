@@ -1,0 +1,6 @@
+creditcard.csv
+creditcard.csv.zip
+*.csv
+*.zip
+__pycache__/
+*.pyc
