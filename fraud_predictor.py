@@ -1,23 +1,12 @@
 import pandas as pd
 import joblib
 
-# ===============================
-# Load trained model & features
-# ===============================
 model = joblib.load("credit_card_fraud_model.pkl")
 feature_columns = joblib.load("feature_columns.pkl")
 
 print("✅ Model loaded successfully")
 
-# ===============================
-# Prediction helpers
-# ===============================
 def predict_one(input_data):
-    """
-    input_data:
-      - list of values in feature_columns order
-      - OR dict with keys = feature column names
-    """
     if isinstance(input_data, dict):
         df = pd.DataFrame([input_data], columns=feature_columns)
     else:
@@ -35,11 +24,8 @@ def show_result(pred, prob):
     else:
         print(f"\n✅ LEGIT TRANSACTION (probability = {prob:.4f})")
 
-# ===============================
-# Input modes
-# ===============================
 def mode_manual():
-    print("\nMODE 1: Enter values one by one")
+    print("\nEnter values one by one")
     values = []
     for col in feature_columns:
         while True:
@@ -53,8 +39,7 @@ def mode_manual():
     show_result(pred, prob)
 
 def mode_paste():
-    print("\nMODE 2: Paste comma-separated values")
-    print(f"You must paste {len(feature_columns)} values in this order:\n")
+    print("\nPaste comma-separated values")
     print(", ".join(feature_columns))
 
     raw = input("\nPaste values: ").strip()
@@ -74,8 +59,7 @@ def mode_paste():
     show_result(pred, prob)
 
 def mode_csv():
-    print("\nMODE 3: Predict from CSV file")
-    print("CSV must contain these columns:\n")
+    print("\nPredicting from CSV file")
     print(", ".join(feature_columns))
 
     path = input("\nEnter CSV file path: ").strip().strip('"').strip("'")
@@ -98,28 +82,22 @@ def mode_csv():
     df["Predicted_Class"] = preds
     df["Fraud_Probability"] = probs
 
-    print("\n✅ Prediction completed. First 10 results:\n")
+    print("\nFirst 10 results:\n")
     print(df[["Predicted_Class", "Fraud_Probability"]].head(10))
 
-    save = input("\nSave full results to CSV? (y/n): ").lower()
+    save = input("\nSave results to CSV? (y/n): ").lower()
     if save == "y":
-        out = input("Output file name (example: predictions.csv): ")
+        out = input("Output file name: ")
         df.to_csv(out, index=False)
-        print("✅ Results saved successfully")
+        print("✅ Results saved")
 
-# ===============================
-# Menu
-# ===============================
 while True:
-    print("\n==============================")
-    print("CREDIT CARD FRAUD PREDICTION")
-    print("==============================")
-    print("1) Manual input (one by one)")
+    print("\n1) Manual input")
     print("2) Paste comma-separated values")
-    print("3) Predict from CSV file")
+    print("3) Predict from CSV")
     print("0) Exit")
 
-    choice = input("Enter your choice: ").strip()
+    choice = input("Choice: ").strip()
 
     if choice == "1":
         mode_manual()
@@ -132,9 +110,3 @@ while True:
         break
     else:
         print("❌ Invalid choice")
-'''
-If i make any changes , i should type the below things in terminal to push the changes to git repo
-git add .
-git commit -m "Describe what you changed"
-git push
-'''
