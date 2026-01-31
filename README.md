@@ -149,6 +149,11 @@ python -m streamlit run app.py
 Open in browser (if not automatic)
 http://localhost:8501
 
+## Live demo
+
+Access the deployed application here:
+https://credit-card-fraud-detection-swajith.streamlit.app/
+
 Updating the Repository
 git add .
 git commit -m "Describe what you changed"
